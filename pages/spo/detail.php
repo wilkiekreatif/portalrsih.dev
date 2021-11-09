@@ -66,7 +66,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header"><?php echo($_SESSION['menu'].' '.$unit); ?><a href="#tambah_spo" class="btn btn-sm btn-success pull-right" id="NotID" data-toggle="modal"><i class="fa fa-upload"></i> TAMBAH SPO <?php echo($unit);?> BARU</a> </h1>
+                            <h1 class="page-header"><?php echo($_SESSION['menu'].' '.$unit); ?><a href="index.php?unit=<?php echo($unit);?>" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Kembali ke menu sebelumnya</a> </h1>
                         </div>
 
                         <div class="col-lg-12">
@@ -85,74 +85,67 @@
                             <?php
                                 }
                             ?>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    DAFTAR <?php echo($unit); ?> RS INTAN HUSADA
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"> DETAIL SPO
+                                        <?php
+                                            $id = $_GET['id'];
+                                            $tampil = mysqli_query($connect,"SELECT * FROM spo WHERE id='$id'");
+                                            $w = mysqli_fetch_array($tampil);
+                                            // echo('DETAIL '.$w['judul']);
+                                        ?>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                <h4 class="mb-1">JUDUL SPO</h4>
+                                                <!-- <small>3 days ago</small> -->
+                                                </div>
+                                                <h5 class="mb-1"><?php echo($w['judul']); ?></h5>
+                                                <!-- <small>And some small print.</small> -->
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                <h4 class="mb-1">DESKRIPSI SPO</h4>
+                                                <!-- <small>3 days ago</small> -->
+                                                </div>
+                                                <h5 class="mb-1"><?php echo($w['deskripsi']); ?></h5>
+                                                <!-- <small>And some small print.</small> -->
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                <h4 class="mb-1">TANGGAL UPLOAD</h4>
+                                                <!-- <small class="text-muted">3 days ago</small> -->
+                                                </div>
+                                                <h5 class="mb-1"><?php echo($w['tgl_upload']); ?></h5>
+                                                <!-- <small class="text-muted">And some muted small print.</small> -->
+                                            </a>
+                                        </div>
+                                        <a href="index.php?unit=<?php echo($unit);?>" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Update SPO</a>
+                                    </div>
                                 </div>
-                                <div class="panel-body">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-spo">
-                                        <thead>
-                                            <tr>
-                                                <th>NO</th>
-                                                <th>JUDUL</th>
-                                                <th>DESKRIPSI</th>
-                                                <th>TGL UPLOAD</th>
-                                                <!-- <td>FILE VIEWER</td> -->
-                                                <th>#</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>NO</th>
-                                                <th>JUDUL</th>
-                                                <th>DESKRIPSI</td>
-                                                <th>TGL UPLOAD</th>
-                                                <!-- <td>FILE VIEWER</td> -->
-                                                <th>#</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <?php
-                                                //membuat query membaca record dari tabel User      
-                                                $query="SELECT * FROM spo WHERE unit = '$unit' ORDER BY tgl_upload ASC";
-                                                //menjalankan query      
-                                                if (mysqli_query($connect,$query)) {      
-                                                    $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
-                                                //mengecek record kosong     
-                                                if (mysqli_num_rows($result) > 0) {
-                                                    $no='1';
-                                                    //menampilkan hasil query      
-                                                    while($row = mysqli_fetch_array($result)) {      
-                                                        echo "<tr>";
-                                                        echo "	<td width='5%'>".$no."</td>";    
-                                                        // echo "	<td width='20%'>".$row["unit"]."</td>";
-                                                        echo "	<td width='15%'>".$row["judul"]."</td>";
-                                                        echo "	<td width='15%'>".$row["deskripsi"]."</td>";      
-                                                        echo "	<td width='10%'>".$row["tgl_upload"]."</td>";
-                                            ?>              
-                                                        <!-- <td width='28%' align='center'>
-                                                            <object
-                                                                type="application/pdf"
-                                                                data="<?php echo($row['files']); ?>"
-                                                                width="500"
-                                                                height="600"
-                                                                >
-                                                            </object>
-                                                        </td> -->
-                                            <?php
-                                                        echo "  <td width='5%' align='center'> <a href='detail.php?unit=$unit&id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
-                                                        // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
-                                                        echo "</tr>";   
-                                                        $no++;
-                                                    }   
-                                                }
-                                            ?>
-                                		</tbody>
-                                    </table>
+                            </div>
+
+                            <div class="col-lg-7">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        FILE VIEWER
+                                    </div>
+                                    <div class="panel-body">
+                                        <object
+                                            type="application/pdf"
+                                            data="<?php echo($w['files']); ?>"
+                                            width="100%"
+                                            height="700"
+                                            >
+                                        </object>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                             
                         <!-- /.panel -->
 

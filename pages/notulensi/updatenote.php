@@ -1,6 +1,7 @@
 <?php
     session_start();
     $_SESSION['menu']='Update Notulensi';
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,22 +68,23 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header"><?php echo($_SESSION['menu'].'  '); ?><a href="index.php" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Kembali ke Menu Sebelumnya</a> </h1>
+                            <h1 class="page-header"><?php echo($_SESSION['menu'].'  '); 
+                                                        $id = $_GET['id'];
+                                                        $tampil = mysqli_query($connect,"SELECT * FROM notulensi WHERE id='$id'");
+                                                        $w = mysqli_fetch_array($tampil);
+                                                    ?><a href="onprogress.php?unit=<?php echo($w['unit']); ?>" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Kembali ke Menu Sebelumnya</a> </h1>
                         </div>
 
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <?php
-                                        $id = $_GET['id'];
-                                        $tampil = mysqli_query($connect,"SELECT * FROM notulensi WHERE id='$id'");
-                                        $w = mysqli_fetch_array($tampil);
                                         echo('Unit '.$w['unit']);
                                     ?>
                                 </div>
 
                                 <div class="panel-body">
-                                    <form action="../controller/updatenotulensi.php?unit=<?php echo($w['unit']); ?>&id=<?php echo($w['id']); ?>" method="post">
+                                    <form action="../controller/updatenotulensibaru.php?unit=<?php echo($w['unit']); ?>&id=<?php echo($w['id']); ?>" method="post">
                                         <div class="col-lg-6">
                                             <!-- <div class="form-group has-feedback">
                                                 <label for="Id Notulensi">id Notulensi</label>
@@ -101,18 +103,48 @@
                                             </div>
                                             <div class="form-group has-feedback">
                                                 <label for="pic1">PIC 1 *</label>
-                                                <input required type="text" name="pic1" class="form-control" placeholder="..." value="<?php echo($w['pic1']); ?>" maxlength="20">
-                                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                                <select required class="form-control" name="pic1" id="pic1">
+                                                    <option selected>-</option>
+                                                    <?php
+                                                    $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
+                                                    while ($q = mysqli_fetch_array($tampil)) {
+                                                        if($w['pic1']==$q['nama']){
+                                                            echo "<option selected value='$q[nama]'>$q[nama]</option>";
+                                                        }else{
+                                                            echo "<option value='$q[nama]'>$q[nama]</option>";
+                                                        }
+                                                    }?>
+                                                </select>
                                             </div>
                                             <div class="form-group has-feedback">
                                                 <label for="pic1">PIC 2</label>
-                                                <input type="text" name="pic2" class="form-control" placeholder="..." value="<?php echo($w['pic2']); ?>" maxlength="20">
-                                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                                <select class="form-control" name="pic2" id="pic2">
+                                                    <option selected>-</option>
+                                                    <?php
+                                                    $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
+                                                    while ($q = mysqli_fetch_array($tampil)) {
+                                                        if($w['pic2']==$q['nama']){
+                                                                echo "<option selected value='$q[nama]'>$q[nama]</option>";
+                                                            }else{
+                                                                echo "<option value='$q[nama]'>$q[nama]</option>";
+                                                            }
+                                                    }?>
+                                                </select>
                                             </div>
                                             <div class="form-group has-feedback">
                                                 <label for="pic1">PIC 3</label>
-                                                <input type="text" name="pic3" class="form-control" placeholder="..." value="<?php echo($w['pic3']); ?>" maxlength="20">
-                                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                                <select class="form-control" name="pic3" id="pic3">
+                                                    <option selected>-</option>
+                                                    <?php
+                                                    $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
+                                                    while ($q = mysqli_fetch_array($tampil)) {
+                                                        if($w['pic3']==$q['nama']){
+                                                            echo "<option selected value='$q[nama]'>$q[nama]</option>";
+                                                        }else{
+                                                            echo "<option value='$q[nama]'>$q[nama]</option>";
+                                                        }
+                                                    }?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">

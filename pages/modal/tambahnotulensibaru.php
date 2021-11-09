@@ -8,19 +8,8 @@
                 <h4 class="modal-title" id="judul">NOTULENSI BARU</h4>
             </div>
             <div class="modal-body">
-                <form action="../controller/vnotulensi.php" method="post">
-                    <div class="form-group has-feedback">
-                        <label for="unit">Unit *</label>
-                        <select required class="form-control" name="unit" id="unit">
-                            <option value="" selected>--Pilih Bagian--</option>
-                            <?php
-                            $tampil = mysqli_query($connect,"SELECT DISTINCT nama FROM mst_unit ORDER BY nama");
-                            while ($w = mysqli_fetch_array($tampil)) {
-                            echo "<option value='$w[nama]'>$w[nama]</option>";
-                            }?>
-                        </select>
-                    </div>
-
+                <form action="../controller/vnotulensibaru.php?unit=<?php echo($unit); ?>" method="post">
+                    
                     <div class="form-group has-feedback">
                         <label for="permasalahan">Permasalahan *</label>
                         <textarea required type="text" name="masalah" class="form-control" placeholder="..." rows="3" maxlength="50"></textarea> 
@@ -34,21 +23,39 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <label for="pic1">PIC 1 *</label>
-                        <input required type="text" name="pic1" class="form-control" placeholder="..." maxlength="20">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        <label for="unit">PIC 1 *</label>
+                        <select required class="form-control" name="unit" id="unit">
+                            <option value="" selected>--Pilih Salah Satu--</option>
+                            <?php
+                            $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
+                            while ($w = mysqli_fetch_array($tampil)) {
+                            echo "<option value='$w[nama]'>$w[nama]</option>";
+                            }?>
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback">
                         <label for="pic2">PIC 2</label>
-                        <input type="text" name="pic2" class="form-control" placeholder="..." maxlength="50">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        <select class="form-control" name="unit" id="unit">
+                            <option selected>--Pilih Salah Satu--</option>
+                            <?php
+                            $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
+                            while ($w = mysqli_fetch_array($tampil)) {
+                            echo "<option value='$w[nama]'>$w[nama]</option>";
+                            }?>
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback">
                         <label for="pic3">PIC 3</label>
-                        <input type="text" name="pic3" class="form-control" placeholder="..." maxlength="50">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        <select class="form-control" name="unit" id="unit">
+                            <option selected>--Pilih Salah Satu--</option>
+                            <?php
+                            $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
+                            while ($w = mysqli_fetch_array($tampil)) {
+                            echo "<option value='$w[nama]'>$w[nama]</option>";
+                            }?>
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback">

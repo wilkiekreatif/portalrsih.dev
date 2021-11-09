@@ -3,7 +3,7 @@
 	$host   = 'localhost';
 	$user   = 'root';
 	$pass   = '';
-	$dbname = 'portalrsih';
+	$dbname = 'portal_rsih';
 	
 	//mengubung ke host
 	$connect = mysqli_connect($host, $user, $pass, $dbname);

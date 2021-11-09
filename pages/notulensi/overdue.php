@@ -1,7 +1,7 @@
 <?php
     session_start();
-    $unit = $_GET['unit'];
-    $_SESSION['menu']='SPO';
+    $_SESSION['menu']='Notulensi Overdue';
+    $unit            =$_GET['unit'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu'].' '.$unit);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,8 +40,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     </head>
+
     <body>
+
         <div id="wrapper">
 
             <!-- Navigation -->
@@ -66,7 +69,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header"><?php echo($_SESSION['menu'].' '.$unit); ?><a href="#tambah_spo" class="btn btn-sm btn-success pull-right" id="NotID" data-toggle="modal"><i class="fa fa-upload"></i> TAMBAH SPO <?php echo($unit);?> BARU</a> </h1>
+                            <h1 class="page-header"><?php echo($_SESSION['menu'].' '.$unit); ?>
+                            <!-- <a href="#tambah_notulensi_" class="btn btn-sm btn-success pull-right" id="NotID" data-toggle="modal"><i class="fa fa-upload"></i> TAMBAH NOTULENSI</a> </h1> -->
                         </div>
 
                         <div class="col-lg-12">
@@ -74,81 +78,86 @@
                                 if (!empty($_GET['message']) && $_GET['message'] == 'success') {
                             ?>
                                     <div class="alert alert-success" role="alert">
-                                        <strong>Berhasil!</strong> SPO <?php echo($unit); ?> baru berhasil di input
+                                        <strong>Berhasil!</strong> Data notulensi berhasil di input
                                     </div>
                             <?php
                                 }else if (!empty($_GET['message']) && $_GET['message'] == 'updated') {
                             ?>
                                     <div class="alert alert-success" role="alert">
-                                        <strong>Berhasil!</strong> SPO <?php echo($unit); ?> berhasil di Update
+                                        <strong>Berhasil!</strong> Data notulensi berhasil di Update
                                     </div>
                             <?php
                                 }
                             ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    DAFTAR <?php echo($unit); ?> RS INTAN HUSADA
+                                    Data Notulensi Rapat RS Intan Husada
                                 </div>
+
                                 <div class="panel-body">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-spo">
+                                    <table width="100%" class="table table-bordered table-hover" id="dataTables-notulensi">
                                         <thead>
                                             <tr>
                                                 <th>NO</th>
-                                                <th>JUDUL</th>
-                                                <th>DESKRIPSI</th>
-                                                <th>TGL UPLOAD</th>
-                                                <!-- <td>FILE VIEWER</td> -->
+                                                <th>UNIT</th>
+                                                <th>MASALAH</th>
+                                                <th>TINDAK LANJUT</th>
+                                                <th>HASIL</th>
+                                                <th>PIC 1</th>
+                                                <th>PIC 2</th>
+                                                <th>PIC 3</th>
                                                 <th>#</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>NO</th>
-                                                <th>JUDUL</th>
-                                                <th>DESKRIPSI</td>
-                                                <th>TGL UPLOAD</th>
-                                                <!-- <td>FILE VIEWER</td> -->
+                                                <th>UNIT</th>
+                                                <th>MASALAH</th>
+                                                <th>TINDAK LANJUT</th>
+                                                <th>HASIL</th>
+                                                <th>PIC 1</th>
+                                                <th>PIC 2</th>
+                                                <th>PIC 3</th>
                                                 <th>#</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <?php
                                                 //membuat query membaca record dari tabel User      
-                                                $query="SELECT * FROM spo WHERE unit = '$unit' ORDER BY tgl_upload ASC";
+                                                $query="SELECT * FROM notulensi WHERE unit='$unit' AND status=1 ORDER BY tgl_input ASC";
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
                                                 } else die ("Error menjalankan query". mysql_error());
+                                                
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
                                                     $no='1';
                                                     //menampilkan hasil query      
                                                     while($row = mysqli_fetch_array($result)) {      
-                                                        echo "<tr>";
-                                                        echo "	<td width='5%'>".$no."</td>";    
-                                                        // echo "	<td width='20%'>".$row["unit"]."</td>";
-                                                        echo "	<td width='15%'>".$row["judul"]."</td>";
-                                                        echo "	<td width='15%'>".$row["deskripsi"]."</td>";      
-                                                        echo "	<td width='10%'>".$row["tgl_upload"]."</td>";
-                                            ?>              
-                                                        <!-- <td width='28%' align='center'>
-                                                            <object
-                                                                type="application/pdf"
-                                                                data="<?php echo($row['files']); ?>"
-                                                                width="500"
-                                                                height="600"
-                                                                >
-                                                            </object>
-                                                        </td> -->
-                                            <?php
-                                                        echo "  <td width='5%' align='center'> <a href='detail.php?unit=$unit&id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
-                                                        // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
+                                                        if($row['status']==='0'){
+                                                            echo "<tr>";
+                                                        }else if($row['status']==='1'){
+                                                            echo "<tr class='warning'>";
+                                                        }else if($row['status']==='2'){
+                                                            echo "<tr class='success'>";
+                                                        }
+                                                        echo "	<td>".$no."</td>";    
+                                                        echo "	<td width='20%'>".$row["unit"]."</td>";
+                                                        echo "	<td>".$row["masalah"]."</td>";      
+                                                        echo "	<td>".$row["tindaklanjut"]."</td>";
+                                                        echo "	<td>".$row["hasil"]."</td>";
+                                                        echo "	<td>".$row["pic1"]."</td>";
+                                                        echo "	<td>".$row["pic2"]."</td>";
+                                                        echo "	<td>".$row["pic3"]."</td>";
+                                                        echo "<td width='10%' align='center'> <a href='update.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-floppy-save'></i> UPDATE DATA</a></td>";
                                                         echo "</tr>";   
                                                         $no++;
                                                     }   
                                                 }
                                             ?>
-                                		</tbody>
+                                	    </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -170,8 +179,7 @@
         <!-- MODAL -->
 
         <?php
-            include('../modal/tambahspo.php');
-            // include('../modal/updatenotulensi.php');
+            include('../modal/tambahnotulensi.php');
         ?>
 
         <!-- MODAL END -->
@@ -196,7 +204,7 @@
 
         <script>
             $(document).ready(function() {
-                $('#dataTables-spo').DataTable({
+                $('#dataTables-notulensi').DataTable({
                     responsive: true
                 });
             });
@@ -208,6 +216,7 @@
                 });
             }, 5000);
         </script>
+
 
     </body>
 
