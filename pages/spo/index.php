@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
+    include('../../config.php');
     $unit = $_GET['unit'];
     $_SESSION['menu']='SPO';
 ?>
@@ -14,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu'].' '.$unit);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -66,28 +68,50 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header"><?php echo($_SESSION['menu'].' '.$unit); ?><a href="#tambah_spo" class="btn btn-sm btn-success pull-right" id="NotID" data-toggle="modal"><i class="fa fa-upload"></i> TAMBAH SPO <?php echo($unit);?> BARU</a> </h1>
+                            <h1 class="page-header"><?php echo($_SESSION['menu'].' '.$unit);
+                                                            if(($_SESSION['level']==='0') OR ($_SESSION['level']==='1')){
+                                                    ?>
+                                                                <a href="#tambah_spo" class="btn btn-sm btn-success pull-right" id="NotID" data-toggle="modal"><i class="fa fa-upload"></i> TAMBAH SPO <?php echo($unit);?> BARU</a> </h1>
+                                                    <?php   } ?>
                         </div>
 
                         <div class="col-lg-12">
                             <?php 
                                 if (!empty($_GET['message']) && $_GET['message'] == 'success') {
                             ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <strong>Berhasil!</strong> SPO <?php echo($unit); ?> baru berhasil di input
-                                    </div>
+                                <div class="alert alert-success" role="alert">
+                                    <strong>Berhasil!</strong> SPO <?php echo($unit); ?> baru berhasil di input
+                                </div>
                             <?php
                                 }else if (!empty($_GET['message']) && $_GET['message'] == 'updated') {
                             ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <strong>Berhasil!</strong> SPO <?php echo($unit); ?> berhasil di Update
-                                    </div>
+                                <div class="alert alert-success" role="alert">
+                                    <strong>Berhasil!</strong> SPO <?php echo($unit); ?> berhasil di Update
+                                </div>
+                            <?php
+                                }else if (!empty($_GET['error']) && $_GET['error'] == '1') {
+                            ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Kesalahan!</strong> Ukuran File SPO <?php echo($unit); ?> lebih dari 5MB, silahkan compress terlebih dahulu.
+                                </div>
+                            <?php
+                                }else if (!empty($_GET['error']) && $_GET['error'] == '2') {
+                            ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Kesalahan!</strong> Pastikan File SPO <?php echo($unit); ?> ber ekstensi PDF.
+                                </div>
+                            <?php
+                                }else if (!empty($_GET['message']) && $_GET['message'] == 'gagal') {
+                            ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Kesalahan!</strong> Proses upload data gagal, pastikan koneksi internet anda stabil dan silahkan ulangi kembali.
+                                </div>
                             <?php
                                 }
                             ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    DAFTAR <?php echo($unit); ?> RS INTAN HUSADA
+                                    DAFTAR <?php echo($unit.' '.$company); ?>
                                 </div>
                                 <div class="panel-body">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-spo">

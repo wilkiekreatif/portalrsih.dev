@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
     $_SESSION['menu']='Dashboard';
     include('../../config.php');
 ?>
@@ -14,7 +15,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -71,6 +72,93 @@
                         <div class="col-lg-12">
                             <h1 class="page-header"><?php echo($_SESSION['menu']); ?></h1>
                         </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-book fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?php
+                                                    $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM spo");
+										            $data = mysqli_fetch_array($q);
+										            echo($data['total']);
+                                                ?>
+                                            </div>
+                                            <div>SPO RSIH</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-book fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?php
+                                                    $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM pedoman");
+										            $data = mysqli_fetch_array($q);
+										            echo($data['total']);
+                                                ?>
+                                            </div>
+                                            <div>PEDOMAN RSIH</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-yellow">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-book fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?php
+                                                    $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM panduan");
+										            $data = mysqli_fetch_array($q);
+										            echo($data['total']);
+                                                ?>
+                                            </div>
+                                            <div>PANDUAN RSIH</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-book fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?php
+                                                    $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM formulir");
+										            $data = mysqli_fetch_array($q);
+										            echo($data['total']);
+                                                ?>
+                                            </div>
+                                            <div>FORMULIR RSIH</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
                         <!-- /.col-lg-12 -->
                         <div class="col-md-4">
                             <div class="panel panel-default">
@@ -127,7 +215,7 @@
                         <div class="col-md-8">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <i class="fa fa-bell fa-fw"></i> INFO UMUM RS Intan Husada
+                                    <i class="fa fa-map-marker fa-fw"></i> LOKASI <?php echo($company); ?>
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -155,7 +243,7 @@
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    DAFTAR UNIT RS INTAN HUSADA
+                                    DAFTAR UNIT <?php echo($company); ?>
                                 </div>
 
                                 <div class="panel-body">

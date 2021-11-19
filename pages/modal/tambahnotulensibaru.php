@@ -24,8 +24,8 @@
 
                     <div class="form-group has-feedback">
                         <label for="unit">PIC 1 *</label>
-                        <select required class="form-control" name="unit" id="unit">
-                            <option value="" selected>--Pilih Salah Satu--</option>
+                        <select required class="form-control" name="pic1" id="pic1">
+                            <option value="" selected>-</option>
                             <?php
                             $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
                             while ($w = mysqli_fetch_array($tampil)) {
@@ -36,8 +36,8 @@
 
                     <div class="form-group has-feedback">
                         <label for="pic2">PIC 2</label>
-                        <select class="form-control" name="unit" id="unit">
-                            <option selected>--Pilih Salah Satu--</option>
+                        <select class="form-control" name="pic2" id="pic2">
+                            <option selected>-</option>
                             <?php
                             $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
                             while ($w = mysqli_fetch_array($tampil)) {
@@ -48,8 +48,8 @@
 
                     <div class="form-group has-feedback">
                         <label for="pic3">PIC 3</label>
-                        <select class="form-control" name="unit" id="unit">
-                            <option selected>--Pilih Salah Satu--</option>
+                        <select class="form-control" name="pic3" id="pic3">
+                            <option selected>-</option>
                             <?php
                             $tampil = mysqli_query($connect,"SELECT a.nama FROM mst_user a, mst_jabatan b WHERE a.jabatan = b.nama AND b.level=0 ORDER BY a.nama ASC");
                             while ($w = mysqli_fetch_array($tampil)) {

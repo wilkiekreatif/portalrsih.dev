@@ -16,6 +16,51 @@
         </div> -->
         <!-- /input-group -->
       </li>
+
+      <li>
+        <a href="#"><i class="fa fa-archive fa-fw"></i> Regulasi Induk <span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a href="../hospitalbylaw/"><i class="fa fa-hospital-o fa-fw"></i> Hospital By Laws</a>
+          </li>
+          <li>
+            <a href="../corporatebylaw/"><i class="fa fa-briefcase fa-fw"></i> Corporate By Laws</a>
+          </li>
+          <li>
+            <a href="../medicalbylaw/"><i class="fa fa-stethoscope fa-fw"></i> Medical By Laws</a>
+          </li>
+          <li>
+            <a href="../nursingbylaw/"><i class="fa fa-user-md fa-fw"></i> Nursing By Laws</a>
+          </li>
+          <li>
+            <a href="../aturandirutsotk"><i class="fa fa-user fa-fw"></i> Peraturan Direktur Utama tentang SOTK</a>
+          </li>
+          <li>
+            <a href="../sdrs/"><i class="fa fa-h-square  fa-fw"></i> Kebijakan Manajemen Sumber Daya RS</a>
+          </li>
+          <li>
+            <a href="../kspbp/"><i class="fa fa-line-chart fa-fw"></i> Kebijakan Standar Pelayanan Berfokus Pasien</a>
+          </li>
+          <li>
+            <a href="../kpn/"><i class="fa fa-university fa-fw"></i> Kebijakan Program Nasional</a>
+          </li>
+        </ul>
+        <!-- /.nav-second-level -->
+      </li>
+
+      <li class="sidebar-search">
+        <!-- <h6>Manajemen Dokumen</h6> -->
+        <!-- <div class="input-group custom-search-form">
+          input type="text" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div> -->
+        <!-- /input-group -->
+      </li>
+
       <li>
         <a href="#"><i class="fa fa-dollar fa-fw"></i> Divisi Marketing & Keuangan <span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
@@ -229,10 +274,22 @@
         </ul>
         <!-- /.nav-second-level -->
       </li>
+      <li class="sidebar-search">
+        <!-- <h6>Manajemen Dokumen</h6> -->
+        <!-- <div class="input-group custom-search-form">
+          input type="text" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div> -->
+        <!-- /input-group -->
+      </li>
 
-      <!-- <li>
-          <a href="../notulensi/"><i class="fa fa-hospital-o fa-fw"></i> Notulensi Rapat</a>
-      </li> -->
+      <li>
+          <a href="../../../konsul-it/login/"><i class="fa fa-wrench fa-fw"></i> Konsultasi-IT</a>
+      </li>
     </ul>
   </div>
   <!-- /.sidebar-collapse -->

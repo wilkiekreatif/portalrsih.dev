@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
+    include('../../config.php');
     $_SESSION['menu']='Update Notulensi';
     
 ?>
@@ -14,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -164,7 +166,7 @@
                                                     ?></textarea> 
                                             </div>
                                             <div class="form-group has-feedback">
-                                                <label for="deadline">Deadline Baru</label>
+                                                <label for="deadline">Status</label>
                                                 <select required class="form-control" name="status" id="status">
                                                     <option value="" selected>--Pilih Bagian--</option>
                                                     <?php

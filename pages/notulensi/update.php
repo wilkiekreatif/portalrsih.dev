@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
     $_SESSION['menu']='Update Notulensi';
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

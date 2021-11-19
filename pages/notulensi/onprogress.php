@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
+    include('../../config.php');
     $_SESSION['menu']='Notulensi On Progress';
     $unit            =$_GET['unit'];
 ?>
@@ -14,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -90,7 +92,7 @@
                             ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Data Notulensi Rapat RS Intan Husada
+                                    Data Notulensi Rapat <?php echo($company); ?>
                                 </div>
 
                                 <div class="panel-body">
@@ -158,6 +160,8 @@
                                             ?>
                                 		</tbody>
                                     </table>
+                                    <a href="../export/exportexcel.php?unit=<?php echo $unit;?>&data=onprogress" class="btn btn-sm btn-default"><i class="fa fa-file-excel-o"></i> EXPORT TO EXCEL</a>
+                                    <a href="../export/exportpdf.php?unit=<?php echo $unit;?>&data=onprogress" class="btn btn-sm btn-default"><i class="fa fa-print"></i> EXPORT TO PDF</a>   
                                 </div>
                             </div>
                         </div>
