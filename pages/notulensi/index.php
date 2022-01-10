@@ -128,7 +128,7 @@
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
+                                                } else die ("Error menjalankan query");
                                                 
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
@@ -180,6 +180,8 @@
         <?php
             include('../modal/tambahnotulensi.php');
             include('../modal/updatenotulensi.php');
+            include('../component/backtotop.php');
+
         ?>
 
         <!-- MODAL END -->

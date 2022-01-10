@@ -12,7 +12,7 @@
                     
                     <div class="form-group has-feedback">
                         <label for="permasalahan">Permasalahan *</label>
-                        <textarea required type="text" name="masalah" class="form-control" placeholder="..." rows="3" maxlength="50"></textarea> 
+                        <textarea required type="text" name="masalah" class="form-control" placeholder="..." rows="3" maxlength="5000"></textarea> 
                         <!-- <span class="glyphicon glyphicon-user form-control-feedback"></span> -->
                     </div>
 

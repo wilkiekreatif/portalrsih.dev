@@ -244,8 +244,13 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     DAFTAR UNIT <?php echo($company); ?>
+                                <!-- </div> -->
+                                <!-- <div class="card-tools"> -->
+                                    <!-- <button type="button" class="pull-right" data-toggle="modal" data-target="#tambah_unit">
+                                        <i class="fa fa-plus"></i>
+                                        Tambah Unit Baru
+                                    </button> -->
                                 </div>
-
                                 <div class="panel-body">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-unit">
                                         <thead>
@@ -275,7 +280,7 @@
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
+                                                } else die ("Error menjalankan query");
                                                 
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
@@ -311,10 +316,10 @@
         </div>
         <!-- /#wrapper -->
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+        <?php
+            include('../component/backtotop.php');
+            // include('../modal/tambahunitbaru.php');
+        ?>
 
         <!-- jQuery -->
         <script src="../../assets/vendor/jquery/jquery.min.js"></script>

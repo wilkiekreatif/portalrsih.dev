@@ -4,7 +4,7 @@
     require('../controller/accountcontrol.php');
     // $unit = $_GET['unit'];
     $_SESSION['menu']='REGULASI INDUK';
-    $unit            ='KEBIJAKAN MANAJEMEN SDRS';
+    $unit            ='KEBIJAKAN MANAJEMEN';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -141,7 +141,7 @@
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
+                                                } else die ("Error menjalankan query");
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
                                                     $no='1';
@@ -194,6 +194,8 @@
 
         <?php
             include('../modal/tambahsdrs.php');
+            include('../component/backtotop.php');
+
             // include('../modal/updatenotulensi.php');
         ?>
 

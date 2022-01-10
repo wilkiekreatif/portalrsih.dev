@@ -11,7 +11,7 @@
                 <form action="../controller/vkspbp.php?unit=<?php echo $unit;?>" method="post" enctype="multipart/form-data">
                     <div class="form-group has-feedback">
                         <label for="judul">Judul </label>
-                        <input required type="text" name="judul" class="form-control" placeholder="..." maxlength="50">
+                        <input required type="text" name="judul" class="form-control" placeholder="..." maxlength="255">
                         <!-- <span class="glyphicon glyphicon-user form-control-feedback"></span> -->
                     </div>
 
@@ -23,7 +23,7 @@
 
                     <div class="form-group has-feedback">
                         <label for="files">File</label>
-                        <input required type="file" name="upload" id="upload" class="form-control" placeholder="..." maxlength="10">
+                        <input required type="file" name="upload" id="upload" class="form-control" placeholder="...">
                         <!-- <span class="glyphicon glyphicon-user form-control-feedback"></span> -->
                     </div>
                     <!-- <label>* File PDF dengan size maksimal 5mb</label> -->

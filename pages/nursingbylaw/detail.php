@@ -93,7 +93,7 @@
                                     <div class="panel-heading"> DETAIL BERKAS
                                         <?php
                                             $id = $_GET['id'];
-                                            $tampil = mysqli_query($connect,"SELECT * FROM spo WHERE id='$id'");
+                                            $tampil = mysqli_query($connect,"SELECT * FROM nursingbylaw WHERE id='$id'");
                                             $w = mysqli_fetch_array($tampil);
                                             // echo('DETAIL '.$w['judul']);
                                         ?>

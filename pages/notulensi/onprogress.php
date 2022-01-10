@@ -35,6 +35,7 @@
 
         <!-- DataTables Responsive CSS -->
         <link href="../../assets/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/datetime/1.1.1/css/dataTables.dateTime.min.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -88,14 +89,69 @@
                                         <strong>Berhasil!</strong> Data notulensi berhasil di Update
                                     </div>
                             <?php
+                                }else if (!empty($_GET['message']) && $_GET['message'] == 'deleted') {
+                            ?>
+                                    <div class="alert alert-success" role="alert">
+                                        <strong>Berhasil!</strong> Data notulensi berhasil di Hapus
+                                    </div>
+                            <?php
                                 }
                             ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
+                                    <i class="fa fa-cogs" aria-hidden="true"></i> Filter Data
+                                </div>
+                                <div class="panel-body">
+                                    <?php $unit=$_GET['unit']; ?>
+                                    <form action="filter.php?unit=<?php echo($unit);?>" method="POST">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="sortirberdasarkan">Sortir Berdasarkan</label>
+                                                <select required class="form-control" id="sortirberdasarkan">
+                                                    <option>-- Pilih Salah Satu --</option>
+                                                    <option value="1">Tanggal Input Data</option>
+                                                    <option value="2">Tanggal Deadline Pertama</option>
+                                                    <option value="3">Tanggal Deadline Baru</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="date1">Tanggal Awal</label>
+                                                <input required type="date" class="form-control" id="date1">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="date2">Tanggal Akhir</label>
+                                                <input required type="date" class="form-control" id="date2">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-success" type="submit">Upload Berkas</button>
+                                            <button class="btn btn-default" type="reset">Reset</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
                                     Data Notulensi Rapat <?php echo($company); ?>
                                 </div>
-
+                                
                                 <div class="panel-body">
+                                    <!-- <table border="0" cellspacing="5" cellpadding="5">
+                                        <tbody>
+                                            <tr>
+                                                <td>Minimum date:</td>
+                                                <td><input type="text" id="min" name="min"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Maximum date:</td>
+                                                <td><input type="text" id="max" name="max"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table> -->
                                     <table width="100%" class="table table-bordered table-hover" id="dataTables-notulensi">
                                         <thead>
                                             <tr>
@@ -130,7 +186,7 @@
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
+                                                } else die ("Error menjalankan query");
                                                 
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
@@ -152,8 +208,13 @@
                                                         echo "	<td>".$row["pic2"]."</td>";
                                                         echo "	<td>".$row["pic3"]."</td>";
                                                         echo "	<td>".$row["deadline"]."</td>";
-                                                        echo "<td width='10%' align='center'> <a href='updatenote.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-floppy-save'></i> UPDATE DATA</a></td>";
-                                                        echo "</tr>";   
+                                                        echo "<td width='20%' align='center'> <a href='updatenote.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-floppy-save'></i> UPDATE DATA</a>";
+                                                        if(($_SESSION['level']==='0') OR ($_SESSION['level']==='1')){
+                                                        ?>
+                                                            <a onclick="return confirm('Apakah anda yakin?')" href='../controller/hapusnotulensi.php?<?php echo("id=$row[id]&unit=$unit"); ?>' class='btn btn-sm btn-danger'> <i class='glyphicon glyphicon-trash'></i> HAPUS DATA</a>
+                                                        <?php
+                                                        }
+                                                        echo "</td></tr>";   
                                                         $no++;
                                                     }   
                                                 }
@@ -183,6 +244,8 @@
 
         <?php
             include('../modal/tambahnotulensibaru.php');
+            include('../component/backtotop.php');
+
         ?>
 
         <!-- MODAL END -->
@@ -204,6 +267,8 @@
         <script src="../../assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
         <script src="../../assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
         <script src="../../assets/vendor/datatables-responsive/dataTables.responsive.js"></script>
+        <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
+
 
         <script>
             $(document).ready(function() {

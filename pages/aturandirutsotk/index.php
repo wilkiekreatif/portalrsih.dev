@@ -141,7 +141,7 @@
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
+                                                } else die ("Error menjalankan query");
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
                                                     $no='1';
@@ -194,11 +194,11 @@
 
         <?php
             include('../modal/tambahsotk.php');
+            include('../component/backtotop.php');
             // include('../modal/updatenotulensi.php');
         ?>
 
         <!-- MODAL END -->
-
 
         <!-- jQuery -->
         <script src="../../assets/vendor/jquery/jquery.min.js"></script>

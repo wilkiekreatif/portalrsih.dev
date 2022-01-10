@@ -95,12 +95,12 @@
                                             </div> -->
                                             <div class="form-group has-feedback">
                                                 <label for="permasalahan">Permasalahan *</label>
-                                                <textarea required type="text" name="masalah" class="form-control" placeholder="..." rows="3" maxlength="50"><?php echo($w['masalah']);
+                                                <textarea required type="text" name="masalah" class="form-control" placeholder="..." rows="3" maxlength="2000"><?php echo($w['masalah']);
                                                     ?></textarea> 
                                             </div>
                                             <div class="form-group has-feedback">
                                                 <label for="tindaklanjut">Tindak Lanjut *</label>
-                                                <textarea required type="text" name="tindaklanjut" class="form-control" placeholder="..." rows="3" maxlength="200" ><?php echo($w['tindaklanjut']);
+                                                <textarea required type="text" name="tindaklanjut" class="form-control" placeholder="..." rows="3" maxlength="2000" ><?php echo($w['tindaklanjut']);
                                                     ?></textarea> 
                                             </div>
                                             <div class="form-group has-feedback">
@@ -162,7 +162,7 @@
                                             </div>
                                             <div class="form-group has-feedback">
                                                 <label for="permasalahan">Hasil</label>
-                                                <textarea type="text" name="hasil" class="form-control" placeholder="..." rows="3" maxlength="50"><?php echo($w['hasil']);
+                                                <textarea type="text" name="hasil" class="form-control" placeholder="..." rows="3" maxlength="2000"><?php echo($w['hasil']);
                                                     ?></textarea> 
                                             </div>
                                             <div class="form-group has-feedback">

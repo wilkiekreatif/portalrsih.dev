@@ -3,6 +3,7 @@
     require('../controller/accountcontrol.php');
     include('../../config.php');
     $unit = $_GET['unit'];
+    // var_dump($unit);
     // $_SESSION['menu']='CORPORATE BY LAWS';
 ?>
 <!DOCTYPE html>
@@ -93,7 +94,7 @@
                                     <div class="panel-heading"> DETAIL BERKAS
                                         <?php
                                             $id = $_GET['id'];
-                                            $tampil = mysqli_query($connect,"SELECT * FROM spo WHERE id='$id'");
+                                            $tampil = mysqli_query($connect,"SELECT * FROM kpn WHERE id='$id'");
                                             $w = mysqli_fetch_array($tampil);
                                             // echo('DETAIL '.$w['judul']);
                                         ?>
