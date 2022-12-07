@@ -2,8 +2,10 @@
     session_start();
     require('../controller/accountcontrol.php');
     include('../../config.php');
-    $_SESSION['menu']='Notulensi On Progress';
-    $unit            =$_GET['unit'];
+    $unit               = $_GET['unit'];
+    $_SESSION['menu']   = 'Notulensi On Progress';
+    $_SESSION['unit']   = $unit;
+    $_SESSION['filter'] = '0';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,35 +106,70 @@
                                 <div class="panel-body">
                                     <?php $unit=$_GET['unit']; ?>
                                     <form action="filter.php?unit=<?php echo($unit);?>" method="POST">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="sortirberdasarkan">Sortir Berdasarkan</label>
-                                                <select required class="form-control" id="sortirberdasarkan">
-                                                    <option>-- Pilih Salah Satu --</option>
-                                                    <option value="1">Tanggal Input Data</option>
-                                                    <option value="2">Tanggal Deadline Pertama</option>
-                                                    <option value="3">Tanggal Deadline Baru</option>
-                                                </select>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="filterberdasarkan">Sortir Berdasarkan</label>
+                                                    <select required class="form-control" id="filterberdasarkan" name="filterberdasarkan">
+                                                        <?php
+                                                            $filter=$_GET['filter'];
+                                                            if($filter==='0'){?>
+                                                                <option selected value="">-- Pilih Salah Satu --</option>
+                                                                <option value="1">Tanggal Input Data</option>
+                                                                <option value="2">Tanggal Deadline Pertama</option>
+                                                                <option value="3">Tanggal Deadline Baru</option>
+                                                            <?php }else if($filter==='1'){?>
+                                                                <option value="">-- Pilih Salah Satu --</option>
+                                                                <option selected value="1">Tanggal Input Data</option>
+                                                                <option value="2">Tanggal Deadline Pertama</option>
+                                                                <option value="3">Tanggal Deadline Baru</option>
+                                                            <?php }else if($filter==='2'){?>
+                                                                <option value="">-- Pilih Salah Satu --</option>
+                                                                <option value="1">Tanggal Input Data</option>
+                                                                <option selected value="2">Tanggal Deadline Pertama</option>
+                                                                <option value="3">Tanggal Deadline Baru</option>
+                                                            <?php }else if($filter==='3'){?>
+                                                                <option value="">-- Pilih Salah Satu --</option>
+                                                                <option value="1">Tanggal Input Data</option>
+                                                                <option value="2">Tanggal Deadline Pertama</option>
+                                                                <option selected value="3">Tanggal Deadline Baru</option>
+                                                            <?php }?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="date1">Tanggal Awal</label>
+                                                    <input required type="date" class="form-control" id="date1" name="date1"
+                                                        <?php
+                                                            if(isset($_GET['date1'])){
+                                                                $date1 = $_GET['date1'];
+                                                                echo("value='".$date1."'");
+                                                            }
+                                                        ?>
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="date2">Tanggal Akhir</label>
+                                                    <input required type="date" class="form-control" id="date2" name="date2"
+                                                        <?php
+                                                            if(isset($_GET['date2'])){
+                                                                $date2 = $_GET['date2'];
+                                                                echo("value='".$date2."'");
+                                                            }
+                                                        ?>
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3" style="margin-top: 1.6%;">
+                                                <button class="btn btn-success" type="submit" style="width: 60%;">Apply</button>
+                                                <a href="../notulensi/onprogress.php?unit=<?php echo($unit); ?>&filter=0" class="btn btn-warning pull-right" style="width: 38%;">Reset</a>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="date1">Tanggal Awal</label>
-                                                <input required type="date" class="form-control" id="date1">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="date2">Tanggal Akhir</label>
-                                                <input required type="date" class="form-control" id="date2">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button class="btn btn-success" type="submit">Upload Berkas</button>
-                                            <button class="btn btn-default" type="reset">Reset</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -182,7 +219,24 @@
                                         <tbody>
                                             <?php
                                                 //membuat query membaca record dari tabel User      
-                                                $query="SELECT * FROM notulensi WHERE unit='$unit' AND status=0 ORDER BY tgl_input ASC";
+                                                $filter=$_GET['filter'];
+                                                if($filter==='0'){
+                                                    $query="SELECT * FROM notulensi WHERE unit='$unit' AND status=0 ORDER BY tgl_input ASC";
+                                                }else if($filter==='1'){
+                                                    $date1 = $_GET['date1'];
+                                                    $date2 = $_GET['date2'];
+                                                    // var_dump($date1.' & '.$date2);
+                                                    $query="SELECT * FROM notulensi WHERE (tgl_input BETWEEN '$date1' AND '$date2') AND unit= '$unit' AND status=0 ORDER BY tgl_input ASC";
+                                                    // $query="SELECT * FROM notulensi WHERE (unit='$unit' AND status=0) AND (tgl_input BETWEEN '$date1' AND '$date2')";
+                                                }else if($filter==='2'){
+                                                    $date1 = $_GET['date1'];
+                                                    $date2 = $_GET['date2'];
+                                                    $query="SELECT * FROM notulensi WHERE (deadline BETWEEN '$date1' AND '$date2') AND unit= '$unit' AND status=0 ORDER BY tgl_input ASC";
+                                                }else if($filter==='3'){
+                                                    $date1 = $_GET['date1'];
+                                                    $date2 = $_GET['date2'];
+                                                    $query="SELECT * FROM notulensi WHERE (deadline_baru BETWEEN '$date1' AND '$date2') AND unit= '$unit' AND status=0 ORDER BY tgl_input ASC";
+                                                }
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     

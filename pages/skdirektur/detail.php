@@ -3,7 +3,7 @@
     require('../controller/accountcontrol.php');
     include('../../config.php');
     $unit = $_GET['unit'];
-    $_SESSION['menu']='Pedoman';
+    $_SESSION['menu']='SK Direktur';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,7 +93,7 @@
                                     <div class="panel-heading"> DETAIL PEDOMAN
                                         <?php
                                             $id = $_GET['id'];
-                                            $tampil = mysqli_query($connect,"SELECT * FROM pedoman WHERE id='$id'");
+                                            $tampil = mysqli_query($connect,"SELECT * FROM skdirektur WHERE id='$id'");
                                             $w = mysqli_fetch_array($tampil);
                                             // echo('DETAIL '.$w['judul']);
                                         ?>

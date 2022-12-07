@@ -5,6 +5,6 @@
     $unit = $_GET['unit'];
     $query = mysqli_query($connect,"DELETE FROM notulensi WHERE id='$id'");
     if ($query) {
-        header('location:../notulensi/onprogress.php?unit='.$unit.'&message=deleted');
+        header('location:../notulensi/filterreset.php');
     }
 ?>

@@ -74,7 +74,7 @@
                                                         $id = $_GET['id'];
                                                         $tampil = mysqli_query($connect,"SELECT * FROM notulensi WHERE id='$id'");
                                                         $w = mysqli_fetch_array($tampil);
-                                                    ?><a href="onprogress.php?unit=<?php echo($w['unit']); ?>" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Kembali ke Menu Sebelumnya</a> </h1>
+                                                    ?><a href="onprogress.php?unit=<?php echo($w['unit']); ?>&filter=0" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Kembali ke Menu Sebelumnya</a> </h1>
                         </div>
 
                         <div class="col-lg-12">

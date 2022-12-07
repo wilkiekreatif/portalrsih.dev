@@ -1,0 +1,10 @@
+[20-Sep-2022 20:06:44 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[20-Sep-2022 20:06:44 Asia/Jakarta] PHP Notice:  Undefined index: menu in /home/rsintanh/portal.rsintanhusada.com/pages/medicalbylaw/detail.php on line 71
+[02-Nov-2022 12:22:23 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[02-Nov-2022 12:22:23 Asia/Jakarta] PHP Notice:  Undefined index: menu in /home/rsintanh/portal.rsintanhusada.com/pages/medicalbylaw/detail.php on line 71
+[02-Dec-2022 16:51:50 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[02-Dec-2022 16:51:50 Asia/Jakarta] PHP Notice:  Undefined index: level in /home/rsintanh/portal.rsintanhusada.com/pages/medicalbylaw/index.php on line 72
+[02-Dec-2022 16:51:50 Asia/Jakarta] PHP Notice:  Undefined index: level in /home/rsintanh/portal.rsintanhusada.com/pages/medicalbylaw/index.php on line 72
+[07-Dec-2022 11:08:59 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[07-Dec-2022 11:08:59 Asia/Jakarta] PHP Notice:  Undefined index: level in /home/rsintanh/portal.rsintanhusada.com/pages/medicalbylaw/index.php on line 72
+[07-Dec-2022 11:08:59 Asia/Jakarta] PHP Notice:  Undefined index: level in /home/rsintanh/portal.rsintanhusada.com/pages/medicalbylaw/index.php on line 72

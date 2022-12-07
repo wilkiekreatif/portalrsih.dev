@@ -25,6 +25,6 @@
                                                         status='$status'
                                   WHERE id='$id'");
   if ($query) {
-		header('location:../../pages/notulensi/onprogress.php?unit='.$unit.'&message=updated');
+		header('location:../../pages/notulensi/onprogress.php?unit='.$unit.'&filter=0&message=updated');
   }
 ?>

@@ -78,24 +78,49 @@
                         <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <i class="fa fa-bell fa-fw"></i> NOMOR DARURAT KAB. GARUT
+                                    <i class="fa fa-user fa-fw"></i> DATA USER
                                 </div>
+                                <?php
+                                    
+                                    $q = mysqli_query($connect,"SELECT * FROM mst_user WHERE username='".$_SESSION['username']."'");
+                                    $data = mysqli_fetch_array($q);
+                                ?>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="list-group">
                                         <a href="#" class="list-group-item">
-                                            <i class="fa fa-taxi fa-fw"></i> Pemadam Kebakaran
-                                            <span class="pull-right text-muted"><em>(0262) 232113</em>
+                                            <i class="fa fa-taxi fa-fw"></i> USERNAME
+                                            <span class="pull-right text-muted"><em><?php echo($data['username']); ?></em>
                                             </span>
                                         </a>
                                         <a href="#" class="list-group-item">
-                                            <i class="fa fa-taxi fa-fw"></i> POS
-                                            <span class="pull-right text-muted"><em>(0262) 233832</em>
+                                            <i class="fa fa-taxi fa-fw"></i> NAMA LENGKAP
+                                            <span class="pull-right text-muted"><em><?php echo($data['nama']); ?></em>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                            <i class="fa fa-taxi fa-fw"></i> JABATAN
+                                            <span class="pull-right text-muted"><em><?php echo($data['jabatan']); ?></em>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                            <i class="fa fa-taxi fa-fw"></i> LEVEL
+                                            <span class="pull-right text-muted"><em><?php 
+                                                                                        if($data['level']==0){
+                                                                                            echo('GOD MODE');
+                                                                                        }else if($data['level']==1){
+                                                                                            echo('SUPERADMIN');
+                                                                                        }if($data['level']==2){
+                                                                                            echo('USER');
+                                                                                        }if($data['level']==3){
+                                                                                            echo('JONGOS');
+                                                                                        }
+                                                                                    ?></em>
                                             </span>
                                         </a>
                                     </div>
                                     <!-- /.list-group -->
-                                    <a href="https://infogarut.id/catat-ini-nomor-penting-ketika-keadaan-genting-di-garut/" class="btn btn-default btn-block">Lihat lebih detail</a>
+                                    <a href="#" class="btn btn-primary btn-block">UPDATE DATA</a>
                                 </div>
                                 <!-- /.panel-body -->
                             </div>

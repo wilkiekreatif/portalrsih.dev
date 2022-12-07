@@ -169,7 +169,11 @@
                                                         </td> -->
                                             <?php
                                                         echo "  <td width='5%' align='center'> <a href='detail.php?unit=$unit&id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
-                                                        // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
+                                                        if(($_SESSION['level']==='0') OR ($_SESSION['level']==='1')){
+                                            ?>
+                                                            <a onclick="return confirm('Apakah anda yakin?')" href='hapus.php?<?php echo("id=$row[id]"); ?>' class='btn btn-sm btn-danger'> <i class='glyphicon glyphicon-trash'></i> HAPUS DATA</a></td>
+                                            <?php
+                                                        }
                                                         echo "</tr>";   
                                                         $no++;
                                                     }   

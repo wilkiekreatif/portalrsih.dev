@@ -1,0 +1,5 @@
+[13-Oct-2022 09:18:29 Asia/Jakarta] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/rsintanh/portal.rsintanhusada.com/pages/preferences/index.php on line 86
+[13-Oct-2022 10:31:53 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[13-Oct-2022 10:31:53 Asia/Jakarta] PHP Notice:  Undefined index: username in /home/rsintanh/portal.rsintanhusada.com/pages/preferences/index.php on line 85
+[13-Oct-2022 13:34:56 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[13-Oct-2022 13:34:56 Asia/Jakarta] PHP Notice:  Undefined index: username in /home/rsintanh/portal.rsintanhusada.com/pages/preferences/index.php on line 85

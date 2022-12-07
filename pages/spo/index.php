@@ -82,6 +82,12 @@
                                 <div class="alert alert-success" role="alert">
                                     <strong>Berhasil!</strong> SPO <?php echo($unit); ?> baru berhasil di input
                                 </div>
+                            <?php 
+                                }else if (!empty($_GET['message']) && $_GET['message'] == 'deleted') {
+                            ?>
+                                <div class="alert alert-success" role="alert">
+                                    <strong>Berhasil!</strong> SPO <?php echo($unit); ?> baru berhasil di hapus
+                                </div>
                             <?php
                                 }else if (!empty($_GET['message']) && $_GET['message'] == 'updated') {
                             ?>
@@ -122,7 +128,7 @@
                                                 <th>DESKRIPSI</th>
                                                 <th>TGL UPLOAD</th>
                                                 <!-- <td>FILE VIEWER</td> -->
-                                                <th>#</th>
+                                                <th width="20%">#</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -165,7 +171,12 @@
                                                             </object>
                                                         </td> -->
                                             <?php
-                                                        echo "  <td width='5%' align='center'> <a href='detail.php?unit=$unit&id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
+                                                        echo "  <td width='20%' align='center'> <a href='detail.php?unit=$unit&id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
+                                                        if(($_SESSION['level']==='0') OR ($_SESSION['level']==='1')){
+                                            ?>
+                                                            <a onclick="return confirm('Apakah anda yakin?')" href='hapus.php?<?php echo("id=$row[id]"); ?>' class='btn btn-sm btn-danger'> <i class='glyphicon glyphicon-trash'></i> HAPUS DATA</a></td>
+                                            <?php
+                                                        }
                                                         // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
                                                         echo "</tr>";   
                                                         $no++;

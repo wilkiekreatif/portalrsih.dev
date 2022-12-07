@@ -1,0 +1,7 @@
+[23-Dec-2021 13:26:06 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/rsintanh/portal.rsintanhusada.com/config.php on line 9
+[23-Dec-2021 13:26:16 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/rsintanh/portal.rsintanhusada.com/config.php on line 9
+[23-Dec-2021 13:30:44 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/rsintanh/portal.rsintanhusada.com/config.php on line 9
+[23-Dec-2021 13:31:45 Asia/Jakarta] PHP Warning:  mysqli_connect(): (42000/1044): Access denied for user 'rsintanh_wildan'@'localhost' to database 'rsintanh_portal' in /home/rsintanh/portal.rsintanhusada.com/config.php on line 9
+[23-Dec-2021 13:32:37 Asia/Jakarta] PHP Warning:  mysqli_connect(): (42000/1044): Access denied for user 'rsintanh_wildan'@'localhost' to database 'rsintanh_portal' in /home/rsintanh/portal.rsintanhusada.com/config.php on line 9
+[23-Dec-2021 13:32:39 Asia/Jakarta] PHP Warning:  mysqli_connect(): (42000/1044): Access denied for user 'rsintanh_wildan'@'localhost' to database 'rsintanh_portal' in /home/rsintanh/portal.rsintanhusada.com/config.php on line 9
+[23-Dec-2021 13:34:00 Asia/Jakarta] PHP Warning:  mysqli_connect(): (42000/1044): Access denied for user 'rsintanh_wildan'@'localhost' to database 'rsintanh_portal' in /home/rsintanh/portal.rsintanhusada.com/config.php on line 9
