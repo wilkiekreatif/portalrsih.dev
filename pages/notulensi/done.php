@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
+    include('../../config.php');
     $_SESSION['menu']='Notulensi Selesai';
     $unit            =$_GET['unit'];
 ?>
@@ -14,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -91,7 +93,7 @@
                             ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Data Notulensi 
+                                    Data Notulensi Rapat <?php echo($company); ?>
                                 </div>
 
                                 <div class="panel-body">
@@ -129,7 +131,7 @@
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
+                                                } else die ("Error menjalankan query");
                                                 
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
@@ -151,7 +153,7 @@
                                                         echo "	<td>".$row["pic1"]."</td>";
                                                         echo "	<td>".$row["pic2"]."</td>";
                                                         echo "	<td>".$row["pic3"]."</td>";
-                                                        echo "<td width='10%' align='center'> <a href='update.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-floppy-save'></i> UPDATE DATA</a></td>";
+                                                        echo "<td width='10%' align='center'> <a href='updatenote.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-floppy-save'></i> UPDATE DATA</a></td>";
                                                         echo "</tr>";   
                                                         $no++;
                                                     }   
@@ -159,6 +161,8 @@
                                             ?>
                                 		</tbody>
                                     </table>
+                                    <a href="../export/exportexcel.php?unit=<?php echo $unit;?>&data=done" class="btn btn-sm btn-default"><i class="fa fa-file-excel-o"></i> EXPORT TO EXCEL</a>
+                                    <a href="../export/exportpdf.php?unit=<?php echo $unit;?>&data=done" class="btn btn-sm btn-default"><i class="fa fa-print"></i> EXPORT TO PDF</a>
                                 </div>
                             </div>
                         </div>
@@ -180,6 +184,8 @@
 
         <?php
             include('../modal/tambahnotulensi.php');
+            include('../component/backtotop.php');
+
         ?>
 
         <!-- MODAL END -->

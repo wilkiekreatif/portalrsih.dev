@@ -6,7 +6,6 @@
         <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="../"><?php 
-        include('../../config.php');
         echo($app_name);
     ?></a>
 </div>

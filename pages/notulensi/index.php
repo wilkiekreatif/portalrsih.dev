@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
     $_SESSION['menu']='Notulensi';
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -89,7 +90,7 @@
                             ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Data Notulensi Rapat RS Intan Husada
+                                    Data Notulensi Rapat <?php echo($company); ?>
                                 </div>
 
                                 <div class="panel-body">
@@ -127,7 +128,7 @@
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
+                                                } else die ("Error menjalankan query");
                                                 
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
@@ -179,6 +180,8 @@
         <?php
             include('../modal/tambahnotulensi.php');
             include('../modal/updatenotulensi.php');
+            include('../component/backtotop.php');
+
         ?>
 
         <!-- MODAL END -->

@@ -1,0 +1,8 @@
+[06-Sep-2022 09:58:10 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[06-Sep-2022 09:58:10 Asia/Jakarta] PHP Notice:  Undefined index: menu in /home/rsintanh/portal.rsintanhusada.com/pages/corporatebylaw/detail.php on line 71
+[21-Nov-2022 10:39:10 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[21-Nov-2022 10:39:10 Asia/Jakarta] PHP Notice:  Undefined index: level in /home/rsintanh/portal.rsintanhusada.com/pages/corporatebylaw/index.php on line 72
+[21-Nov-2022 10:39:10 Asia/Jakarta] PHP Notice:  Undefined index: level in /home/rsintanh/portal.rsintanhusada.com/pages/corporatebylaw/index.php on line 72
+[01-Dec-2022 08:24:37 Asia/Jakarta] PHP Notice:  Undefined index: nama in /home/rsintanh/portal.rsintanhusada.com/pages/component/topmenu.php on line 5
+[01-Dec-2022 08:24:37 Asia/Jakarta] PHP Notice:  Undefined index: level in /home/rsintanh/portal.rsintanhusada.com/pages/corporatebylaw/index.php on line 72
+[01-Dec-2022 08:24:37 Asia/Jakarta] PHP Notice:  Undefined index: level in /home/rsintanh/portal.rsintanhusada.com/pages/corporatebylaw/index.php on line 72

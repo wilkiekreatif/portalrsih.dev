@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
+    include('../../config.php');
     $unit = $_GET['unit'];
     $_SESSION['menu']='SPO';
 ?>
@@ -14,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu'].' '.$unit);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -123,7 +125,7 @@
                                                 <!-- <small class="text-muted">And some muted small print.</small> -->
                                             </a>
                                         </div>
-                                        <a href="index.php?unit=<?php echo($unit);?>" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Update SPO</a>
+                                        <!-- <a href="index.php?unit=<?php echo($unit);?>" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Update SPO</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -134,11 +136,15 @@
                                         FILE VIEWER
                                     </div>
                                     <div class="panel-body">
+                                        <a disabled href="../controller/deletefilespo.php?unit=<?php echo($unit);?>&files=<?php echo($w['files']);?>&id=<?php echo($id);?>" onclick="return  confirm('Apakah anda yakin ingin menghapus file ini?')" class="btn btn-sm btn-default"><i class="fa fa-trash"></i> HAPUS DOKUMEN</a>
+                                        <a disabled href="index.php?unit=<?php echo($unit);?>" class="btn btn-sm btn-primary pull-right"><i class="fa fa-upload"></i> Upload Dokumen Baru</a>
+                                        <br>
+                                        <br>
                                         <object
                                             type="application/pdf"
                                             data="<?php echo($w['files']); ?>"
                                             width="100%"
-                                            height="700"
+                                            height="650"
                                             >
                                         </object>
                                     </div>

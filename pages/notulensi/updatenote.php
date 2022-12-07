@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
+    include('../../config.php');
     $_SESSION['menu']='Update Notulensi';
     
 ?>
@@ -14,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -72,7 +74,7 @@
                                                         $id = $_GET['id'];
                                                         $tampil = mysqli_query($connect,"SELECT * FROM notulensi WHERE id='$id'");
                                                         $w = mysqli_fetch_array($tampil);
-                                                    ?><a href="onprogress.php?unit=<?php echo($w['unit']); ?>" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Kembali ke Menu Sebelumnya</a> </h1>
+                                                    ?><a href="onprogress.php?unit=<?php echo($w['unit']); ?>&filter=0" class="btn btn-sm btn-success pull-right"><i class="fa fa-arrow-left"></i> Kembali ke Menu Sebelumnya</a> </h1>
                         </div>
 
                         <div class="col-lg-12">
@@ -93,12 +95,12 @@
                                             </div> -->
                                             <div class="form-group has-feedback">
                                                 <label for="permasalahan">Permasalahan *</label>
-                                                <textarea required type="text" name="masalah" class="form-control" placeholder="..." rows="3" maxlength="50"><?php echo($w['masalah']);
+                                                <textarea required type="text" name="masalah" class="form-control" placeholder="..." rows="3" maxlength="2000"><?php echo($w['masalah']);
                                                     ?></textarea> 
                                             </div>
                                             <div class="form-group has-feedback">
                                                 <label for="tindaklanjut">Tindak Lanjut *</label>
-                                                <textarea required type="text" name="tindaklanjut" class="form-control" placeholder="..." rows="3" maxlength="200" ><?php echo($w['tindaklanjut']);
+                                                <textarea required type="text" name="tindaklanjut" class="form-control" placeholder="..." rows="3" maxlength="2000" ><?php echo($w['tindaklanjut']);
                                                     ?></textarea> 
                                             </div>
                                             <div class="form-group has-feedback">
@@ -160,11 +162,11 @@
                                             </div>
                                             <div class="form-group has-feedback">
                                                 <label for="permasalahan">Hasil</label>
-                                                <textarea type="text" name="hasil" class="form-control" placeholder="..." rows="3" maxlength="50"><?php echo($w['hasil']);
+                                                <textarea type="text" name="hasil" class="form-control" placeholder="..." rows="3" maxlength="2000"><?php echo($w['hasil']);
                                                     ?></textarea> 
                                             </div>
                                             <div class="form-group has-feedback">
-                                                <label for="deadline">Deadline Baru</label>
+                                                <label for="deadline">Status</label>
                                                 <select required class="form-control" name="status" id="status">
                                                     <option value="" selected>--Pilih Bagian--</option>
                                                     <?php

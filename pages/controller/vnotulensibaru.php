@@ -27,6 +27,6 @@
 																															Null)") or die(mysqli_error($query));
 
   if ($query) {
-		header('location:../../pages/notulensi/onprogress.php?unit='.$unit.'&message=success');
+		header('location:../../pages/notulensi/onprogress.php?unit='.$unit.'&message=success&filter=0');
   }
 ?>

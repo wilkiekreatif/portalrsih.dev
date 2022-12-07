@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require('../controller/accountcontrol.php');
     $_SESSION['menu']='Dashboard';
     include('../../config.php');
 ?>
@@ -14,7 +15,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo($_SESSION['menu']);?> | Portal RSIH</title>
+        <title><?php echo($_SESSION['menu'].' | '.$app_name);?></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -71,6 +72,150 @@
                         <div class="col-lg-12">
                             <h1 class="page-header"><?php echo($_SESSION['menu']); ?></h1>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-user-md fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class="huge">
+                                                    <?php
+                                                        $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM skdirektur");
+                                                        $data = mysqli_fetch_array($q);
+                                                        echo($data['total']);
+                                                    ?>
+                                                </div>
+                                                <div>SK Direktur</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#skdirektur">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">Lihat Detail</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-book fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class="huge">
+                                                    <?php
+                                                        $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM spo");
+                                                        $data = mysqli_fetch_array($q);
+                                                        echo($data['total']);
+                                                    ?>
+                                                </div>
+                                                <div>SPO RSIH</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#spo">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">Lihat Detail</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-green">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-book fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class="huge">
+                                                    <?php
+                                                        $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM pedoman");
+                                                        $data = mysqli_fetch_array($q);
+                                                        echo($data['total']);
+                                                    ?>
+                                                </div>
+                                                <div>PEDOMAN RSIH</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#pedoman">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">Lihat Detail</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-yellow">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-book fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class="huge">
+                                                    <?php
+                                                        $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM panduan");
+                                                        $data = mysqli_fetch_array($q);
+                                                        echo($data['total']);
+                                                    ?>
+                                                </div>
+                                                <div>PANDUAN RSIH</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#panduan">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">Lihat Detail</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-red">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-book fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class="huge">
+                                                    <?php
+                                                        $q = mysqli_query($connect,"SELECT COUNT(*) as total FROM formulir");
+                                                        $data = mysqli_fetch_array($q);
+                                                        echo($data['total']);
+                                                    ?>
+                                                </div>
+                                                <div>FORMULIR RSIH</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#formulir">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">Lihat Detail</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+                    
+                    <div class="row">
                         <!-- /.col-lg-12 -->
                         <div class="col-md-4">
                             <div class="panel panel-default">
@@ -127,7 +272,7 @@
                         <div class="col-md-8">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <i class="fa fa-bell fa-fw"></i> INFO UMUM RS Intan Husada
+                                    <i class="fa fa-map-marker fa-fw"></i> LOKASI <?php echo($company); ?>
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -155,9 +300,14 @@
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    DAFTAR UNIT RS INTAN HUSADA
+                                    DAFTAR UNIT <?php echo($company); ?>
+                                <!-- </div> -->
+                                <!-- <div class="card-tools"> -->
+                                    <!-- <button type="button" class="pull-right" data-toggle="modal" data-target="#tambah_unit">
+                                        <i class="fa fa-plus"></i>
+                                        Tambah Unit Baru
+                                    </button> -->
                                 </div>
-
                                 <div class="panel-body">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-unit">
                                         <thead>
@@ -187,7 +337,7 @@
                                                 //menjalankan query      
                                                 if (mysqli_query($connect,$query)) {      
                                                     $result=mysqli_query($connect,$query);     
-                                                } else die ("Error menjalankan query". mysql_error());
+                                                } else die ("Error menjalankan query");
                                                 
                                                 //mengecek record kosong     
                                                 if (mysqli_num_rows($result) > 0) {
@@ -215,6 +365,380 @@
                         </div>
                     </div>
                     <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-6" id="skdirektur">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    DAFTAR SK DIREKTUR
+                                <!-- </div> -->
+                                <!-- <div class="card-tools"> -->
+                                    <!-- <button type="button" class="pull-right" data-toggle="modal" data-target="#tambah_unit">
+                                        <i class="fa fa-plus"></i>
+                                        Tambah Unit Baru
+                                    </button> -->
+                                </div>
+                                <div class="panel-body">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-skdirektur">
+                                        <thead>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>TGL UPLOAD</th>
+                                                <th>#</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>TGL UPLOAD</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php
+                                                //membuat query membaca record dari tabel User      
+                                                $query="SELECT * FROM skdirektur ORDER BY tgl_upload ASC";
+                                                //menjalankan query      
+                                                if (mysqli_query($connect,$query)) {      
+                                                    $result=mysqli_query($connect,$query);     
+                                                } else die ("Error menjalankan query");
+                                                //mengecek record kosong     
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    $no='1';
+                                                    //menampilkan hasil query      
+                                                    while($row = mysqli_fetch_array($result)) {      
+                                                        echo "<tr>";
+                                                        echo "	<td width='5%'>".$no."</td>";    
+                                                        // echo "	<td width='20%'>".$row["unit"]."</td>";
+                                                        echo "	<td width='15%'>".$row["judul"]."</td>";
+                                                        echo "	<td width='15%'>".$row["deskripsi"]."</td>";      
+                                                        echo "	<td width='10%'>".$row["tgl_upload"]."</td>";
+                                            ?>              
+                                                        <!-- <td width='28%' align='center'>
+                                                            <object
+                                                                type="application/pdf"
+                                                                data="<?php echo($row['files']); ?>"
+                                                                width="500"
+                                                                height="600"
+                                                                >
+                                                            </object>
+                                                        </td> -->
+                                            <?php
+                                                        echo "  <td width='5%' align='center'> <a href='detail.php?id=$row[id]&unit=skdirektur' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
+                                                        // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
+                                                        echo "</tr>";   
+                                                        $no++;
+                                                    }   
+                                                }
+                                            ?>
+                                		</tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6" id="spo">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    DAFTAR SPO RSIH
+                                <!-- </div> -->
+                                <!-- <div class="card-tools"> -->
+                                    <!-- <button type="button" class="pull-right" data-toggle="modal" data-target="#tambah_unit">
+                                        <i class="fa fa-plus"></i>
+                                        Tambah Unit Baru
+                                    </button> -->
+                                </div>
+                                <div class="panel-body">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-spo">
+                                        <thead>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>UNIT</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>UNIT</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php
+                                                //membuat query membaca record dari tabel User      
+                                                $query="SELECT * FROM spo ORDER BY tgl_upload ASC";
+                                                //menjalankan query      
+                                                if (mysqli_query($connect,$query)) {      
+                                                    $result=mysqli_query($connect,$query);     
+                                                } else die ("Error menjalankan query");
+                                                //mengecek record kosong     
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    $no='1';
+                                                    //menampilkan hasil query      
+                                                    while($row = mysqli_fetch_array($result)) {      
+                                                        echo "<tr>";
+                                                        echo "	<td width='5%'>".$no."</td>";    
+                                                        // echo "	<td width='10%'>".$row["tgl_upload"]."</td>";
+                                                        echo "	<td width='20%'>".$row["unit"]."</td>";
+                                                        echo "	<td width='15%'>".$row["judul"]."</td>";
+                                                        echo "	<td width='15%'>".$row["deskripsi"]."</td>";      
+                                            ?>              
+                                                        <!-- <td width='28%' align='center'>
+                                                            <object
+                                                                type="application/pdf"
+                                                                data="<?php echo($row['files']); ?>"
+                                                                width="500"
+                                                                height="600"
+                                                                >
+                                                            </object>
+                                                        </td> -->
+                                            <?php
+                                                        echo "  <td width='5%' align='center'> <a href='detail.php?id=$row[id]&unit=spo' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
+                                                        // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
+                                                        echo "</tr>";   
+                                                        $no++;
+                                                    }   
+                                                }
+                                            ?>
+                                		</tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" id="pedoman">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    DAFTAR PEDOMAN RSIH
+                                <!-- </div> -->
+                                <!-- <div class="card-tools"> -->
+                                    <!-- <button type="button" class="pull-right" data-toggle="modal" data-target="#tambah_unit">
+                                        <i class="fa fa-plus"></i>
+                                        Tambah Unit Baru
+                                    </button> -->
+                                </div>
+                                <div class="panel-body">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-pedoman">
+                                        <thead>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>UNIT</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>UNIT</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php
+                                                //membuat query membaca record dari tabel User      
+                                                $query="SELECT * FROM pedoman ORDER BY tgl_upload ASC";
+                                                //menjalankan query      
+                                                if (mysqli_query($connect,$query)) {      
+                                                    $result=mysqli_query($connect,$query);     
+                                                } else die ("Error menjalankan query");
+                                                //mengecek record kosong     
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    $no='1';
+                                                    //menampilkan hasil query      
+                                                    while($row = mysqli_fetch_array($result)) {      
+                                                        echo "<tr>";
+                                                        echo "	<td width='5%'>".$no."</td>";    
+                                                        // echo "	<td width='10%'>".$row["tgl_upload"]."</td>";
+                                                        echo "	<td width='20%'>".$row["unit"]."</td>";
+                                                        echo "	<td width='15%'>".$row["judul"]."</td>";
+                                                        echo "	<td width='15%'>".$row["deskripsi"]."</td>";      
+                                            ?>              
+                                                        <!-- <td width='28%' align='center'>
+                                                            <object
+                                                                type="application/pdf"
+                                                                data="<?php echo($row['files']); ?>"
+                                                                width="500"
+                                                                height="600"
+                                                                >
+                                                            </object>
+                                                        </td> -->
+                                            <?php
+                                                        echo "  <td width='5%' align='center'> <a href='detail.php?id=$row[id]&unit=pedoman' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
+                                                        // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
+                                                        echo "</tr>";   
+                                                        $no++;
+                                                    }   
+                                                }
+                                            ?>
+                                		</tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" id="panduan">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    DAFTAR PANDUAN RSIH
+                                <!-- </div> -->
+                                <!-- <div class="card-tools"> -->
+                                    <!-- <button type="button" class="pull-right" data-toggle="modal" data-target="#tambah_unit">
+                                        <i class="fa fa-plus"></i>
+                                        Tambah Unit Baru
+                                    </button> -->
+                                </div>
+                                <div class="panel-body">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-panduan">
+                                        <thead>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>UNIT</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>UNIT</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php
+                                                //membuat query membaca record dari tabel User      
+                                                $query="SELECT * FROM panduan ORDER BY tgl_upload ASC";
+                                                //menjalankan query      
+                                                if (mysqli_query($connect,$query)) {      
+                                                    $result=mysqli_query($connect,$query);     
+                                                } else die ("Error menjalankan query");
+                                                //mengecek record kosong     
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    $no='1';
+                                                    //menampilkan hasil query      
+                                                    while($row = mysqli_fetch_array($result)) {      
+                                                        echo "<tr>";
+                                                        echo "	<td width='5%'>".$no."</td>";    
+                                                        // echo "	<td width='10%'>".$row["tgl_upload"]."</td>";
+                                                        echo "	<td width='20%'>".$row["unit"]."</td>";
+                                                        echo "	<td width='15%'>".$row["judul"]."</td>";
+                                                        echo "	<td width='15%'>".$row["deskripsi"]."</td>";      
+                                            ?>              
+                                                        <!-- <td width='28%' align='center'>
+                                                            <object
+                                                                type="application/pdf"
+                                                                data="<?php echo($row['files']); ?>"
+                                                                width="500"
+                                                                height="600"
+                                                                >
+                                                            </object>
+                                                        </td> -->
+                                            <?php
+                                                        echo "  <td width='5%' align='center'> <a href='detail.php?id=$row[id]&unit=panduan' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
+                                                        // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
+                                                        echo "</tr>";   
+                                                        $no++;
+                                                    }   
+                                                }
+                                            ?>
+                                		</tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" id="formulir">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    DAFTAR FORMULIR RSIH
+                                <!-- </div> -->
+                                <!-- <div class="card-tools"> -->
+                                    <!-- <button type="button" class="pull-right" data-toggle="modal" data-target="#tambah_unit">
+                                        <i class="fa fa-plus"></i>
+                                        Tambah Unit Baru
+                                    </button> -->
+                                </div>
+                                <div class="panel-body">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-formulir">
+                                        <thead>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>UNIT</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>NO</th>
+                                                <th>UNIT</th>
+                                                <th>JUDUL</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>#</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php
+                                                //membuat query membaca record dari tabel User      
+                                                $query="SELECT * FROM formulir ORDER BY tgl_upload ASC";
+                                                //menjalankan query      
+                                                if (mysqli_query($connect,$query)) {      
+                                                    $result=mysqli_query($connect,$query);     
+                                                } else die ("Error menjalankan query");
+                                                //mengecek record kosong     
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    $no='1';
+                                                    //menampilkan hasil query      
+                                                    while($row = mysqli_fetch_array($result)) {      
+                                                        echo "<tr>";
+                                                        echo "	<td width='5%'>".$no."</td>";    
+                                                        // echo "	<td width='10%'>".$row["tgl_upload"]."</td>";
+                                                        echo "	<td width='20%'>".$row["unit"]."</td>";
+                                                        echo "	<td width='15%'>".$row["judul"]."</td>";
+                                                        echo "	<td width='15%'>".$row["deskripsi"]."</td>";      
+                                            ?>              
+                                                        <!-- <td width='28%' align='center'>
+                                                            <object
+                                                                type="application/pdf"
+                                                                data="<?php echo($row['files']); ?>"
+                                                                width="500"
+                                                                height="600"
+                                                                >
+                                                            </object>
+                                                        </td> -->
+                                            <?php
+                                                        echo "  <td width='5%' align='center'> <a href='detail.php?id=$row[id]&unit=formulir' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> LIHAT DETAIL DATA</a>";
+                                                        // echo "  <td width='16%' align='center'><a href='detail.php?id=$row[id]' class='btn btn-sm btn-primary'> <i class='glyphicon glyphicon-list-alt'></i> UPDATE DATA</a></td>";
+                                                        echo "</tr>";   
+                                                        $no++;
+                                                    }   
+                                                }
+                                            ?>
+                                		</tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -223,10 +747,10 @@
         </div>
         <!-- /#wrapper -->
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+        <?php
+            include('../component/backtotop.php');
+            // include('../modal/tambahunitbaru.php');
+        ?>
 
         <!-- jQuery -->
         <script src="../../assets/vendor/jquery/jquery.min.js"></script>
@@ -248,6 +772,21 @@
         <script>
             $(document).ready(function() {
                 $('#dataTables-unit').DataTable({
+                    responsive: true
+                });
+                $('#dataTables-skdirektur').DataTable({
+                    responsive: true
+                });
+                $('#dataTables-spo').DataTable({
+                    responsive: true
+                });
+                $('#dataTables-pedoman').DataTable({
+                    responsive: true
+                });
+                $('#dataTables-panduan').DataTable({
+                    responsive: true
+                });
+                $('#dataTables-formulir').DataTable({
                     responsive: true
                 });
             });
